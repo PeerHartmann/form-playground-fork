@@ -370,7 +370,7 @@ class SetValueAction<FORM_DATA extends IndexType> implements FormAction<FORM_DAT
   public constructor(private path: Path<FORM_DATA>, private newValue: any, private dispatch: React.Dispatch<FormAction<FORM_DATA>>, private validate: ValidateFn<FORM_DATA>, private idx: number | null = null) { }
   public execute(state: State<FORM_DATA>):State<FORM_DATA> {
     let newState = { ...state };
-    const newValues = Object.assign({}, state.values) as FORM_DATA;
+    const newValues:IndexType = Object.assign({}, state.values) as IndexType;
     if (this.idx !== null) {
       const valueArray = (newValues[this.path as string] as any);
       // todo how to remove the cast?
@@ -389,7 +389,7 @@ class SetValueAction<FORM_DATA extends IndexType> implements FormAction<FORM_DAT
     } else {
       newValues[this.path as string] = this.newValue;
     }
-    newState.values = newValues;
+    newState.values = newValues as FORM_DATA;
     newState = new ValidateAction(this.dispatch, this.validate).execute(newState);
     newState.submitState = SubmitState.NONE;
     console.log(JSON.stringify(newState));
