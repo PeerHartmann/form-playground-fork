@@ -14,4 +14,4 @@ Es steht zur Frage wann die Validierung durchgeführt wird und somit der Validie
 
 ## Decision Outcome
 
-Chosen option: "Nach jeder Änderung", because so ist immer ein komplettes Validierungsmodell vorhanden. Synchrone Validierung sollte immer schnell genug sein.
+Chosen option: "Zu bestimmten, vom Entwickler wählbaren Zeitpunkten", because Performance muss gewahrt werden ausserdem kann man so auch async sinnvoll validieren.
